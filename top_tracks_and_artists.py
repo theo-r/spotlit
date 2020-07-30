@@ -39,6 +39,8 @@ def create_aggs_dict(name):
     else:
         return 'first'
 
+urlPara = None
+
 sessions = Server.get_current()._session_info_by_id
 session_id_key = list(sessions.keys())[0]
 session = sessions[session_id_key]
@@ -47,15 +49,12 @@ st.title('Your top tracks and artists')
 scope = 'user-top-read'
 auth_manager = spotipy.oauth2.SpotifyOAuth(cache_path=session_cache_path(), scope=scope)
 
-if auth_manager.get_cached_token() is None:
-    # Step 2. Display sign in link when no token
-    auth_url = auth_manager.get_authorize_url()
-    st.markdown(f'[Log in to Spotify]({auth_url})')
+auth_url = auth_manager.get_authorize_url()
+st.markdown(f'[Log in to Spotify]({auth_url})')
 
-    try:
-        urlPara = session.ws.request.connection.params.urlpara
-    except:
-        login_state = st.text('Waiting...')
+urlPara = session.ws.request.connection.params.urlpara
+
+auth_manager.get_access_token(urlPara['code'])
 
 # Step 4. Signed in, display data
 sp = spotipy.Spotify(auth_manager=auth_manager)
