@@ -1,0 +1,7 @@
+.spotify_caches/
+data/
+creds.json
+Pipfile.lock
+setup.sh
+*.ipynb
+app.py
