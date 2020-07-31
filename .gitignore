@@ -5,3 +5,4 @@ Pipfile.lock
 setup.sh
 *.ipynb
 app.py
+.vscode/
