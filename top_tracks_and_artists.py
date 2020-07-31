@@ -59,7 +59,7 @@ except AttributeError:
     urlPara = None
 
 try:
-    token = auth_manager.get_access_token(urlPara['code'])
+    token = auth_manager.get_access_token(urlPara['code'], as_dict=False)
 except TypeError:
     token = None
 
