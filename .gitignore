@@ -6,3 +6,6 @@ setup.sh
 *.ipynb
 app.py
 .vscode/
+routing.py
+useful.txt
+.env
