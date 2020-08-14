@@ -10,9 +10,6 @@ COPY creds.json creds.json
 
 RUN pip3 install -r requirements.txt
 
-ARG SPOTIPY_CLIENT_ID
-ARG SPOTIPY_CLIENT_SECRET
-
 ENV SPOTIPY_REDIRECT_URI=https://spotlit.azurewebsites.net/
 
 RUN rm /usr/local/lib/python3.7/site-packages/tornado/routing.py
