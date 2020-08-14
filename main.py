@@ -1,4 +1,5 @@
 import os
+import json
 
 import streamlit as st
 import spotipy
@@ -9,6 +10,9 @@ from streamlit.server.Server import Server
 caches_folder = './.spotify_caches/'
 if not os.path.exists(caches_folder):
     os.makedirs(caches_folder)
+
+with open('creds.json', 'r') as f:
+    creds = json.load(f)
 
 def session_cache_path():
     return caches_folder + session_id_key
@@ -51,7 +55,10 @@ session = sessions[session_id_key]
 
 st.title('Your top tracks and artists')
 scope = 'user-top-read'
-auth_manager = spotipy.oauth2.SpotifyOAuth(cache_path=session_cache_path(), scope=scope)
+auth_manager = spotipy.oauth2.SpotifyOAuth(client_id=creds['SPOTIPY_CLIENT_ID'], 
+                                            client_secret=creds['SPOTIPY_CLIENT_SECRET'], 
+                                            cache_path=session_cache_path(), 
+                                            scope=scope)
 
 if token is None:
 
