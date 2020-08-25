@@ -100,13 +100,13 @@ if token is not None:
     tracks_short, tracks_medium, tracks_long, artists = prepare_data()
 
     st.write('Top tracks (short-term)')
-    st.write(tracks_short[['name', 'artists.name', 'album.name']][:25])
+    st.write(tracks_short[['name', 'artists.name', 'album.name']])
 
     st.write('Top tracks (medium-term)')
-    st.write(tracks_medium[['name', 'artists.name', 'album.name']][:25])
+    st.write(tracks_medium[['name', 'artists.name', 'album.name']])
 
     st.write('Top tracks (long-term)')
-    st.write(tracks_long[['name', 'artists.name', 'album.name']][:25])
+    st.write(tracks_long[['name', 'artists.name', 'album.name']])
 
     st.write('Top artists')
-    st.write(artists[['short_term', 'medium_term', 'long_term']][:25])
+    st.write(artists[['short_term', 'medium_term', 'long_term']])
